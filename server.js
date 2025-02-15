@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   user: process.env.USER, // Your database username
   password: process.env.PASSWORD, // Your database password (replace it)
   database: process.env.DB, // Your database name
-  port: process.env.PORT, // Default MySQL port
+  port: process.env.PORT || 3306, // Default MySQL port
   connectionLimit: 10, // Set a limit for connections
   waitForConnections: true,
   queueLimit: 0,
