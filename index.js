@@ -56,6 +56,22 @@ app.post("/add", async (req, res) => {
   }
 });
 
+app.post("/getUsers", async (req, res) => {
+  const users = await usermodel.find({}, {}, { lean: true });
+  if (users && users.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Users fetched successfully",
+      data: users,
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      message: "No users found",
+    });
+  }
+});
+
 app.listen(3000, () => {
   console.log("listening");
 });
